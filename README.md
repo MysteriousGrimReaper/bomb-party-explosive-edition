@@ -30,9 +30,9 @@ BombParty is an explosively fast party game where players must think of a word o
 
 ### Design
 - All gameplay features from vanilla BombParty (BP). Here is a screenshot of what gameplay looks like in vanilla BP:
-![[demo.png]]
+![demo](demo.png)
 - Login page design: 
-![[login.png]]
+![demo](login.png)
 
 Here is a sequence diagram that shows how the server would handle giving prompts and also receiving words:
 
