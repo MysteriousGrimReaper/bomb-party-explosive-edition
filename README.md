@@ -1,8 +1,8 @@
-# Your startup name here
+# BombParty: Explosive Edition
 
 [My Notes](notes.md)
 
-A brief description of the application here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+BombParty: Explosive Edition is a new twist on the fast-paced word game BombParty, featuring new gamemodes.
 
 
 > [!NOTE]
@@ -18,45 +18,64 @@ A brief description of the application here. Lorem ipsum dolor sit amet, consect
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] Proper use of Markdown
-- [ ] A concise and compelling elevator pitch
-- [ ] Description of key features
-- [ ] Description of how you will use each technology
-- [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
+- [x] Proper use of Markdown
+- [x] A concise and compelling elevator pitch
+- [x] Description of key features
+- [x] Description of how you will use each technology
+- [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
 ### Elevator pitch
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+BombParty is an explosively fast party game where players must think of a word on the spot or get eliminated. BombParty: Explosive Edition takes this up to the next level with brand new gamemodes to shake up how the game is played.
 
 ### Design
+- All gameplay features from vanilla BombParty (BP). Here is a screenshot of what gameplay looks like in vanilla BP:
+![[BombParty Demo Image.png]]
+- Login page design: 
+![[Login Page.png]]
 
-![Design image](placeholder.png)
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Here is a sequence diagram that shows how the server would handle giving prompts and also receiving words:
 
 ```mermaid
 sequenceDiagram
-    actor You
-    actor Website
-    You->>Website: Replace this with your design
+    actor A as Alice
+    actor B as Bob
+    participant S as Server
+    S->>A: Prompt: NE
+    S-->>B: Prompt: NE
+    A->>S: Send word: SCENE
+    S-->>B: Alice sent word: SCENE
+    S->>B: Prompt: TA
+    S-->>A: Prompt: TA
+    B->>S: Send word: DATA
+    S-->>A: Bob sent word: DATA
 ```
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- Secure login over HTTPS
+- Ability to play BP, which includes:
+	- Hosting and setting up a private game lobby
+	- Gameplay:
+		- Players take turns in a circle, with each player having a limited time to respond.
+		- On a player's turn, they are presented with a prompt consisting of a few letters.
+		- The player must type a word (usually 3 letters or more) that contains the given letters in the same order before the "bomb" explodes.
+		- If a player fails to input a valid word before the time runs out, they lose a life or are eliminated.
+- New BP:EE features:
+	- New gamemodes selectable by the host:
+		- Tag - Players with the bomb chooses who the bomb goes to next.
+		- Red Light Green Light - Players score points by typing words with the given letters, but lose lives if they type while a red light is shown.
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - Views for login, lobby entry, and game
+- **CSS** - Application styling for different devices and screens, responsive design
+- **React** - Login, handling game logic
+- **Service** - Endpoints for authentication, call to Google's reCaptcha to block bots
+- **DB/Login** - Store users and credentials in database, as well as word list
+- **Websocket** - As users play, their words update live to other players
 
 ## 🚀 AWS deliverable
 
